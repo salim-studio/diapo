@@ -1,15 +1,15 @@
-/* diapo — fast lightweight presentation editor. Zero dependencies. */
+/* diapo — © 2026 salim-slimani. Fast lightweight presentation editor. Zero dependencies. */
 :root{
-  --brand:#c44730; --brand2:#f08b73;
-  --bg:#f4f2ee; --panel:#ffffff; --ink:#1d1b19; --muted:#7a7470;
-  --line:#e5ded6; --sel:#2f7bff; --canvas:#8b8580;
+  --brand:#4f46e5; --brand2:#a855f7;
+  --bg:#f5f4fb; --panel:#ffffff; --ink:#1b1830; --muted:#6f6a8a;
+  --line:#e3e0f3; --sel:#4f46e5; --canvas:#8b8580;
   --shadow:0 6px 24px rgba(0,0,0,.12);
   --r:12px;
   --font:"Segoe UI",Tahoma,Arial,"Noto Kufi Arabic","Amiri",sans-serif;
 }
 [data-theme="dark"]{
-  --bg:#191817; --panel:#232120; --ink:#f2ede6; --muted:#a89f96;
-  --line:#383432; --canvas:#0c0b0b;
+  --bg:#131222; --panel:#1e1c33; --ink:#f1eefc; --muted:#a49dc8;
+  --line:#332e55; --canvas:#0c0b14;
   --shadow:0 6px 24px rgba(0,0,0,.5);
 }
 *{box-sizing:border-box}
@@ -19,7 +19,8 @@ button,input,select,textarea{font-family:inherit}
 #app{height:100vh;display:flex;flex-direction:column}
 .topbar{height:52px;flex:0 0 52px;display:flex;align-items:center;gap:10px;padding:0 12px;background:var(--panel);border-bottom:1px solid var(--line);z-index:30}
 .logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:19px;cursor:pointer;user-select:none}
-.logo .dot{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:15px}
+.logo .dot{width:27px;height:27px;border-radius:9px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:inline-flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(79,70,229,.35)}
+.logo .dot svg{display:block}
 .topbar .spacer{flex:1}
 .btn{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:9px;padding:7px 12px;cursor:pointer;font-size:13.5px;display:inline-flex;align-items:center;gap:6px}
 .btn:hover{border-color:var(--brand);color:var(--brand)}
@@ -124,3 +125,4 @@ kbd{background:var(--bg);border:1px solid var(--line);border-bottom-width:2px;bo
   #slide-holder{box-shadow:none;margin:0}
   .print-slide{break-after:page;position:relative;overflow:hidden;background:#fff}
 }
+.foot{margin-top:26px;padding:14px 4px;color:var(--muted);font-size:12.5px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;border-top:1px solid var(--line)}

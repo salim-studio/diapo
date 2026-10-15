@@ -1,44 +1,50 @@
-# diapo ✦ — بديل PowerPoint خفيف وسريع (مثل HeyPuter/presentation)
+# diapo ✦ — Fast presentations in the browser
 
-يعمل **بدون Node وبدون إنترنت وبدون حساب**: افتح `index.html` مباشرة أو عبر `run.py`.
-لا مكتبات خارجية إطلاقاً — ملفان فقط (`styles.css` + `app.js`)، لذلك هو أسرع وأخف من المرجع.
+A fast, lightweight, fully client-side alternative to heavy presentation suites.
+Create, edit, present and export **real `.pptx` files** — with **no account,
+no backend, no build step and zero dependencies** (`index.html` + `styles.css` + `app.js`).
 
-## التشغيل
+© 2026 salim-slimani. All rights reserved.
+
+## Run
 
 ```bash
 cd diapo
-python run.py --open        # يفتح http://localhost:8080/index.html
-# أو: افتح index.html نقراً مزدوجاً (يعمل بfile:// أيضاً)
+python run.py --open        # opens http://localhost:8080/index.html
+# or simply double-click index.html (also works over file://)
 ```
 
-## ما يفعله (متكامل)
+## Features
 
-- 📚 **مكتبة عروض** `#/home`: بحث، فتح، تكرار، إعادة تسمية، حذف، تنزيل pptx
-- ✏️ **محرر**: شرائح (Title / محتوى / عمودين / قسم / صورة+تعليق / فارغة)، سحب لإعادة الترتيب، إخفاء، تكرار
-- 🧩 **كائنات**: نص، 10 أشكال، خطوط، صور (سحب وإفلات)، جداول تُحرَّر في مكانها، روابط (Ctrl+K ضمنياً)
-- 🎨 **تنسيق**: خطوط (15 عائلة)، حجم، B/I/U، لون، محاذاة، تعبئة، حدود، تدوير، محاذاة جماعية، أمام/خلف
-- 🧲 **التقاط ذكي** للحواف والمراكز + `Alt` للتحرير الحر + أسهم للتحريك الدقيق
-- 🎭 **8 سمات** + 3 مقاسات (16:9 / 16:10 / 4:3) + فاتح/داكن/تلقائي
-- ✨ **انتقالات** (تلاشي/انزلاق/تكبير) + مدة + **وضع عرض** بملء الشاشة وملاحظات ومؤقت وB/W
-- 📝 ملاحظات المحاضر • ↩↪ تراجع/إعادة (80 خطوة) • 🔍 بحث واستبدال • 🔍 تكبير 25–400%
-- 💾 حفظ تلقائي محلي (IndexedDB) + حفظ `.pptx` حقيقي + استيراد `.pptx` (نصوص + صور) + PNG (شريحة أو ZIP) + طباعة PDF
-- 🌍 عربي (RTL) / Français / English • 📱 يتجاوب مع الهاتف
+- 📚 **Deck library** (`#/home`): search, open, duplicate, rename, delete, one-click PPTX download
+- ✏️ **Editor**: Title / Title+Content / Two-column / Section / Picture+Caption / Blank layouts; drag to reorder, hide, duplicate slides
+- 🧩 **Objects**: text boxes, 10 shapes, lines, drag-and-drop images, in-place editable tables, hyperlinks
+- 🎨 **Formatting**: font family & size, bold / italic / underline, color, alignment, fill, stroke, rotation, align & distribute, bring forward / send backward
+- 🧲 **Smart snapping** to edges and centers (`Alt` drags freely) + arrow-key nudging
+- 🎭 **8 themes** + 3 slide sizes (16:9 / 16:10 / 4:3) + light / dark / system appearance
+- ✨ **Transitions** (fade / slide / zoom) + fullscreen **present mode** with notes, timer and B/W blackout keys
+- 📝 Speaker notes • ↩↪ Undo/redo (80 steps) • 🔍 Find & replace • 🔍 Zoom 25–400%
+- 💾 Local autosave (IndexedDB) + real `.pptx` export & import (text + images) + PNG export (single or ZIP) + print-to-PDF
+- 🌍 English / Français / عربي (RTL) • 📱 Responsive down to phones
 
-## لماذا أسرع من المرجع؟
+## Why fast?
 
-| المرجع (Puter) | diapo |
+| Heavy suites | diapo |
 |---|---|
-| Vite + ~10 مكتبات + Puter SDK + AI + PWA | صفر مكتبات، ~90KB |
-| يحتاج Node 22+ وبناء | ملف ثابت يفتح فوراً |
-| محركا pptx خارجيان ضخمان | كاتب/قارئ pptx مدمج صغير (deflate أصلي) |
-| مزامنة سحابية معقدة | IndexedDB محلي فوري + تنزيل |
+| Framework + dozen libraries + cloud SDK | Zero dependencies, ~90 KB of JS |
+| Requires Node 22+ and a build | A static file that opens instantly |
+| Bulky external PPTX engines | Tiny built-in PPTX reader/writer (native deflate) |
+| Complex cloud sync | Instant local IndexedDB + file download |
 
-## حدود مقصودة (للسرعة)
+## Known limits (by design, for speed)
 
-- استيراد pptx يستخرج النصوص والصور والتخطيط الأساسي (يتجاهل المخططات/SmartArt المعقدة ويحوّلها لصناديق نص).
-- تصدير pptx متوافق مع PowerPoint/LibreOffice: نصوص، أشكال، صور، جداول، خلفيات، ملاحظات.
-- لا تعاون لحظي ولا AI (يمكن إضافتهما لاحقاً عبر `puter.ai.chat`).
+- PPTX import extracts text, layout basics and images; complex charts/SmartArt become plain text boxes.
+- PPTX export targets PowerPoint/LibreOffice compatibility: text, shapes, images, tables, backgrounds, notes.
+- No real-time collaboration.
 
-## اختصارات
+## Shortcuts
 
-`Ctrl+Z/Y` تراجع • `Ctrl+S` حفظ • `Ctrl+D` تكرار شريحة • `Ctrl+X/C/V` قص/نسخ/لصق • `F5` عرض • `Del` حذف • `Ctrl+A` تحديد الكل • أسهم تنقل/تحريك • `Esc` إلغاء التحديد/خروج العرض.
+`Ctrl+Z/Y` undo/redo • `Ctrl+S` save • `Ctrl+D` duplicate slide • `Ctrl+X/C/V` cut/copy/paste • `F5` present • `Del` delete • `Ctrl+A` select all • arrows move/navigate • `Esc` deselect/exit.
+
+---
+© 2026 salim-slimani

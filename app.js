@@ -1,4 +1,4 @@
-/* diapo v1.0 — fast zero-dependency presentation app (Arabic/French/English, RTL).
+/* diapo v1.0 — © 2026 salim-slimani — fast zero-dependency presentation app (Arabic/French/English, RTL).
    Features: library, editor, themes, transitions, present, notes, undo, tables,
    shapes, images, real .pptx import/export, PNG/PDF, IndexedDB autosave. */
 "use strict";
@@ -84,11 +84,11 @@ const STR={
 ar:{new:"＋ جديد",open:"فتح",import:"استيراد pptx",present:"عرض",export:"تصدير",save:"حفظ",home:"المكتبة",search:"بحث…",slides:"الشرائح",add:"إضافة شريحة",dup:"تكرار",del:"حذف",hide:"إخفاء",insert:"إدراج",design:"تصميم",trans:"انتقالات",show:"عرض الشرائح",notes:"ملاحظات المحاضر",format:"تنسيق",arrange:"ترتيب",undo:"تراجع",redo:"إعادة",zoom:"تكبير",fit:"ملاءمة",find:"بحث واستبدال",lang:"اللغة",theme:"السمة",dark:"داكن",light:"فاتح",system:"تلقائي",size:"المقاس",bgs:"الخلفية",table:"جدول",image:"صورة",shape:"شكل",textbox:"مربع نص",line:"خط",link:"رابط",front:"للأمام",back:"للخلف",align:"محاذاة",png:"PNG",pdf:"PDF",pptx:"PPTX",copy:"حفظ نسخة",rename:"إعادة تسمية",download:"تنزيل",confirmDel:"حذف نهائي؟",saved:"تم الحفظ ✓",saving:"جارٍ الحفظ…",offline:"محفوظ محلياً",title:"عنوان العرض",untitled:"عرض بدون عنوان",empty:"لا عروض بعد — أنشئ واحداً!",start:"ابدأ من قالب",help:"مساعدة",presentHelp:"أسهم/مسافة للتنقل • Esc خروج • B شاشة سوداء • W بيضاء",notesPh:"اكتب ملاحظاتك هنا…",textPh:"انقر نقراً مزدوجاً للكتابة",tb:"نص",noSel:"اختر عنصراً لتنسيقه"},
 en:{new:"+ New",open:"Open",import:"Import pptx",present:"Present",export:"Export",save:"Save",home:"Library",search:"Search…",slides:"Slides",add:"Add slide",dup:"Duplicate",del:"Delete",hide:"Hide",insert:"Insert",design:"Design",trans:"Transitions",show:"Slide Show",notes:"Speaker notes",format:"Format",arrange:"Arrange",undo:"Undo",redo:"Redo",zoom:"Zoom",fit:"Fit",find:"Find & replace",lang:"Language",theme:"Theme",dark:"Dark",light:"Light",system:"Auto",size:"Size",bgs:"Background",table:"Table",image:"Image",shape:"Shape",textbox:"Text box",line:"Line",link:"Link",front:"Bring forward",back:"Send backward",align:"Align",png:"PNG",pdf:"PDF",pptx:"PPTX",copy:"Save a copy",rename:"Rename",download:"Download",confirmDel:"Delete permanently?",saved:"Saved ✓",saving:"Saving…",offline:"Saved locally",title:"Presentation title",untitled:"Untitled deck",empty:"No decks yet — create one!",start:"Start from template",help:"Help",presentHelp:"Arrows/Space navigate • Esc exit • B black • W white",notesPh:"Write your notes here…",textPh:"Double-click to type",tb:"Text",noSel:"Select an object to format"},
 fr:{new:"+ Nouveau",open:"Ouvrir",import:"Importer pptx",present:"Diaporama",export:"Exporter",save:"Enregistrer",home:"Bibliothèque",search:"Rechercher…",slides:"Diapos",add:"Ajouter",dup:"Dupliquer",del:"Supprimer",hide:"Masquer",insert:"Insertion",design:"Création",trans:"Transitions",show:"Diaporama",notes:"Notes",format:"Format",arrange:"Disposition",undo:"Annuler",redo:"Rétablir",zoom:"Zoom",fit:"Ajuster",find:"Rechercher",lang:"Langue",theme:"Thème",dark:"Sombre",light:"Clair",system:"Auto",size:"Taille",bgs:"Arrière-plan",table:"Tableau",image:"Image",shape:"Forme",textbox:"Zone de texte",line:"Ligne",link:"Lien",front:"Avant",back:"Arrière",align:"Aligner",png:"PNG",pdf:"PDF",pptx:"PPTX",copy:"Enregistrer copie",rename:"Renommer",download:"Télécharger",confirmDel:"Supprimer ?",saved:"Enregistré ✓",saving:"Enregistrement…",offline:"Enregistré local",title:"Titre",untitled:"Sans titre",empty:"Aucun diaporama — créez-en un !",start:"Partir d'un modèle",help:"Aide",presentHelp:"Flèches/Espace naviguer • Échap quitter • B noir • W blanc",notesPh:"Vos notes ici…",textPh:"Double-cliquez pour écrire",tb:"Texte",noSel:"Sélectionnez un objet"}};
-let LANG=localStorage.getItem("diapo.lang")||"ar";
+let LANG=localStorage.getItem("diapo.lang")||"en";
 const t=k=>(STR[LANG]&&STR[LANG][k])||STR.en[k]||k;
 /* ============ themes / constants ============ */
 const THEMES=[
- {name:"Diapo Rouge",bg:"#ffffff",fg:"#1d1b19",accent:"#c44730",accent2:"#f08b73",font:"Segoe UI, Tahoma, Arial"},
+ {name:"Diapo",bg:"#ffffff",fg:"#1d1b19",accent:"#4f46e5",accent2:"#c9bff7",font:"Segoe UI, Tahoma, Arial"},
  {name:"Nuit",bg:"#1f1d1c",fg:"#f5efe6",accent:"#f08b73",accent2:"#c44730",font:"Segoe UI, Tahoma, Arial"},
  {name:"Océan",bg:"#f4f9ff",fg:"#0e2a47",accent:"#1668c4",accent2:"#7fb6f5",font:"Segoe UI, Tahoma, Arial"},
  {name:"Forêt",bg:"#f3f7f2",fg:"#17301f",accent:"#1e7a3c",accent2:"#8fd0a2",font:"Segoe UI, Tahoma, Arial"},
@@ -97,7 +97,7 @@ const THEMES=[
  {name:"Monochrome",bg:"#ffffff",fg:"#111111",accent:"#111111",accent2:"#888888",font:"Arial, sans-serif"},
  {name:"Mentor",bg:"#10222e",fg:"#eaf6ff",accent:"#22b8a8",accent2:"#ffd166",font:"Segoe UI, Tahoma, Arial"}];
 const SIZES={"16:9":{w:960,h:540},"16:10":{w:960,h:600},"4:3":{w:960,h:720}};
-const TRANS=[["none","—"],["fade","تلاشي / Fade"],["slide","انزلاق / Slide"],["zoom","تكبير / Zoom"]];
+const TRANS=[["none","None"],["fade","Fade"],["slide","Slide"],["zoom","Zoom"]];
 const SHAPES=["rect","roundRect","ellipse","triangle","diamond","rightArrow","star","heart","cloud","speech"];
 const FONTS=["Segoe UI","Tahoma","Arial","Georgia","Times New Roman","Courier New","Amiri","Noto Kufi Arabic","Cairo","Aptos"];
 /* ============ model ============ */
@@ -105,29 +105,29 @@ function oBox(x,y,w,h,extra={}){return Object.assign({id:uid(),type:"textbox",x,
 function newDeck(title){return{id:uid(),title:title||t("untitled"),theme:0,size:"16:9",bg:null,updated:Date.now(),slides:[newSlide("title"),newSlide("title-content"),newSlide("two-col"),newSlide("section"),newSlide("blank")]};}
 function newSlide(layout="blank"){
   const s={id:uid(),layout,bg:null,hidden:false,transition:"fade",dur:0.5,notes:"",objects:[]};
-  const A="#c44730",D="#1d1b19",G="#7a7470";
-  if(layout==="title"){s.objects.push(oBox(80,90,800,120,{text:"عنوان العرض / Title",size:54,bold:true,align:"center",color:D}));
-    s.objects.push(oBox(180,240,600,70,{text:"عنوان فرعي • sous-titre • subtitle",size:26,align:"center",color:G}));}
-  else if(layout==="title-content"){s.objects.push(oBox(60,30,840,90,{text:"عنوان الشريحة",size:40,bold:true,color:D}));
-    s.objects.push(oBox(60,150,840,300,{text:"• نقطة أولى\n• نقطة ثانية\n• نقطة ثالثة",size:26,color:D}));}
-  else if(layout==="two-col"){s.objects.push(oBox(60,30,840,90,{text:"مقارنة / Comparaison",size:40,bold:true}));
-    s.objects.push(oBox(60,150,390,300,{text:"العمود الأول\n• فكرة 1\n• فكرة 2",size:24}));
-    s.objects.push(oBox(510,150,390,300,{text:"Deuxième colonne\n• idée 1\n• idée 2",size:24}));}
-  else if(layout==="section"){s.objects.push(oBox(60,200,840,120,{text:"قسم جديد",size:60,bold:true,align:"center",color:"#ffffff"}));s.bg=A;}
-  else if(layout==="pic-cap"){s.objects.push(oBox(60,30,840,80,{text:"صورة وتعليق",size:38,bold:true}));
+  const A="#4f46e5",D="#1d1b19",G="#7a7470";
+  if(layout==="title"){s.objects.push(oBox(80,90,800,120,{text:"Presentation title",size:54,bold:true,align:"center",color:D}));
+    s.objects.push(oBox(180,240,600,70,{text:"Subtitle text here",size:26,align:"center",color:G}));}
+  else if(layout==="title-content"){s.objects.push(oBox(60,30,840,90,{text:"Slide title",size:40,bold:true,color:D}));
+    s.objects.push(oBox(60,150,840,300,{text:"• First point\n• Second point\n• Third point",size:26,color:D}));}
+  else if(layout==="two-col"){s.objects.push(oBox(60,30,840,90,{text:"Comparison",size:40,bold:true}));
+    s.objects.push(oBox(60,150,390,300,{text:"First column\n• Idea 1\n• Idea 2",size:24}));
+    s.objects.push(oBox(510,150,390,300,{text:"Second column\n• Idea 1\n• Idea 2",size:24}));}
+  else if(layout==="section"){s.objects.push(oBox(60,200,840,120,{text:"New section",size:60,bold:true,align:"center",color:"#ffffff"}));s.bg=A;}
+  else if(layout==="pic-cap"){s.objects.push(oBox(60,30,840,80,{text:"Picture and caption",size:38,bold:true}));
     s.objects.push({id:uid(),type:"shape",shape:"rect",x:60,y:140,w:560,h:330,rotation:0,fill:"#e8e2d9",stroke:"#c9c0b4",strokeW:2,text:""});
-    s.objects.push(oBox(640,140,260,330,{text:"اكتب التعليق هنا…",size:22}));}
+    s.objects.push(oBox(640,140,260,330,{text:"Write your caption here…",size:22}));}
   return s;
 }
 /* starter demo decks */
 function demoDecks(){
   const d=newDeck("Diapo — "+t("start"));
   d.slides[0].objects[0].text="diapo";d.slides[0].objects[0].size=96;d.slides[0].objects[0].bold=true;
-  d.slides[0].objects[1].text="عروض سريعة • Rapide • Fast  —  PowerPoint في المتصفح";
-  d.slides[1].objects[0].text="لماذا diapo؟";d.slides[1].objects[1].text="• يعمل بدون إنترنت وحساب\n• سريع: بدون مكتبات ثقيلة\n• ملفات pptx حقيقية\n• عربي / Français / English";
-  d.slides[2].objects[0].text="مقارنة سريعة";d.slides[2].objects[1].text="diapo\n• خفيف\n• مجاني\n• مفتوح";d.slides[2].objects[2].text="PowerPoint\n• ثقيل\n• مدفوع\n• مغلق";
-  d.slides[3].objects[0].text="ابدأ الآن ✦";
-  d.slides[4].objects.length=0;d.slides[4].objects.push(oBox(120,180,720,160,{text:"شريحة فارغة — أدرج شكلاً أو صورة أو جدولاً من الشريط",size:28,align:"center"}));
+  d.slides[0].objects[1].text="Fast presentations in your browser — no account, no setup";
+  d.slides[1].objects[0].text="Why diapo?";d.slides[1].objects[1].text="• Works offline, no account\n• Fast: zero heavy libraries\n• Real .pptx files\n• English / Français / عربي";
+  d.slides[2].objects[0].text="Quick comparison";d.slides[2].objects[1].text="diapo\n• Lightweight\n• Free\n• Open";d.slides[2].objects[2].text="Others\n• Heavy\n• Paid\n• Closed";
+  d.slides[3].objects[0].text="Start now ✦";
+  d.slides[4].objects.length=0;d.slides[4].objects.push(oBox(120,180,720,160,{text:"Blank slide — insert a shape, image or table from the toolbar",size:28,align:"center"}));
   return d;
 }
 /* ============ storage (IndexedDB + localStorage) ============ */
@@ -336,7 +336,7 @@ async function importPPTX(buf,name){
           slide.objects.push({id:uid(),type:"image",x,y,w,h,rotation:0,src:`data:image/${ext2};base64,${b64}`});}
       }catch(e){}
     }
-    if(!slide.objects.length)slide.objects.push(oBox(60,60,840,200,{text:"(شريحة مستوردة بدون نص مستخرج)",size:22}));
+    if(!slide.objects.length)slide.objects.push(oBox(60,60,840,200,{text:"(Imported slide — no text extracted)",size:22}));
     deck.slides.push(slide);
     if(deck.slides.length>=300)break;
   }
@@ -366,7 +366,7 @@ function shell(){
 }
 function topbar(showDoc){
   const h=document.createElement("div");h.className="topbar";
-  h.innerHTML=`<div class="logo" id="go-home"><span class="dot">▦</span><span>diapo</span></div>
+  h.innerHTML=`<div class="logo" id="go-home"><span class="dot"><svg width="15" height="15" viewBox="0 0 16 16"><rect x="1.5" y="2" width="13" height="8.6" rx="2" fill="#fff" opacity=".96"/><path d="M6.4 4.3v4.2l3.6-2.1z" fill="#4f46e5"/><rect x="4" y="12.2" width="8" height="1.6" rx=".8" fill="#fff" opacity=".85"/></svg></span><span>diapo</span></div>
   ${showDoc?`<input class="doc-title" id="doc-title" value="${esc(S.deck?.title||"")}" title="${t("title")}"><span class="savestate" id="savestate"></span>`:""}
   <div class="spacer"></div>
   <select class="btn small" id="lang"><option value="ar">عربي</option><option value="en">EN</option><option value="fr">FR</option></select>
@@ -389,12 +389,13 @@ async function homeView(app){
   app.appendChild(topbar(false));
   const d=document.createElement("div");d.className="home";
   d.innerHTML=`<h1>diapo <span style="color:var(--brand)">✦</span></h1>
-  <p class="sub">PowerPoint في المتصفح — سريع، عملي، متكامل. ${esc(t("presentHelp"))}</p>
+  <p class="sub">Fast presentations in the browser — practical, complete, private. ${esc(t("presentHelp"))}</p>
   <div class="actions"><button class="btn primary" id="b-new">${t("new")}</button>
   <button class="btn" id="b-import">📥 ${t("import")}</button>
   <button class="btn" id="b-demo">✨ ${t("start")}</button>
   <input class="btn" id="q" placeholder="${t("search")}" style="min-width:200px"></div>
-  <div class="deck-grid" id="grid"></div>`;
+  <div class="deck-grid" id="grid"></div>
+  <footer class="foot"><span>© 2026 salim-slimani</span><span>diapo ✦ fast presentations</span></footer>`;
   app.appendChild(d);
   const grid=d.querySelector("#grid");
   async function draw(filter=""){
@@ -436,7 +437,7 @@ document.addEventListener("change",async e=>{
   for(const f of e.target.files){
     if(f.name.match(/\.pptx$/i)){toast(t("saving"));const b=await f.arrayBuffer();try{const d=await importPPTX(b,f.name);await dbPut(d);idxUpsert(d);location.hash="#/edit?id="+d.id;}catch(err){toast("Import failed: "+err.message);}}
     else if(f.name.match(/\.json$/i)){try{const d=JSON.parse(await f.text());d.id=uid();await dbPut(d);idxUpsert(d);location.hash="#/edit?id="+d.id;}catch(err){toast("JSON error");}}
-    else if(f.type.startsWith("image/")){toast("🖼 "+f.name+" — افتح عرضاً ثم أسقطها");}
+    else if(f.type.startsWith("image/")){toast("🖼 "+f.name+" — open a deck, then drop it there");}
   }
 });
 /* ============ editor ============ */
@@ -814,7 +815,7 @@ function findDialog(){
 }
 function helpDialog(){
   const d=document.createElement("dialog");
-  d.innerHTML=`<h2>diapo ✦</h2><div style="font-size:14px;line-height:2">🖱️ <b>نقرة مزدوجة</b> للكتابة • <b>Shift+نقر</b> تحديد متعدد • <b>Alt+سحب</b> بدون التصاق<br>⌨️ <kbd>Ctrl+Z</kbd> تراجع <kbd>Ctrl+S</kbd> حفظ <kbd>F5</kbd> عرض <kbd>Del</kbd> حذف <kbd>Ctrl+A</kbd> الكل<br>📥 أسقط <b>pptx</b> أو صورة في أي مكان • 🖨 طباعة = PDF • ⬇ PNG لكل الشرائح (ZIP)<br>🌍 عربي + Français + English • ◐ فاتح/داكن • ↔ 16:9 / 16:10 / 4:3</div><div class="row"><button class="btn primary" onclick="this.closest('dialog').close()">OK</button></div>`;
+  d.innerHTML=`<h2>diapo ✦</h2><div style="font-size:14px;line-height:2">🖱️ <b>Double-click</b> to type • <b>Shift+click</b> multi-select • <b>Alt+drag</b> to disable snapping<br>⌨️ <kbd>Ctrl+Z</kbd> undo <kbd>Ctrl+S</kbd> save <kbd>F5</kbd> present <kbd>Del</kbd> delete <kbd>Ctrl+A</kbd> select all<br>📥 Drop a <b>pptx</b> or an image anywhere • 🖨 Print = PDF • ⬇ PNG per slide or as ZIP<br>🌍 English + Français + عربي • ◐ light / dark • ↔ 16:9 / 16:10 / 4:3</div><div class="row"><button class="btn primary" onclick="this.closest('dialog').close()">OK</button></div>`;
   document.body.appendChild(d);d.showModal();d.addEventListener("close",()=>d.remove());
 }
 /* ---- PNG export ---- */

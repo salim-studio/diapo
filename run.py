@@ -1,4 +1,4 @@
-"""diapo — local preview server (no dependency, stdlib only)."""
+"""diapo — © 2026 salim-slimani. Local preview server (stdlib only, no dependencies)."""
 import http.server, functools, webbrowser, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
