@@ -1,4 +1,4 @@
-# diapo ✦ — Fast presentations in the browser
+![diapo — Fast presentations in the browser](banner.svg)
 
 A fast, lightweight, fully client-side alternative to heavy presentation suites.
 Create, edit, present and export **real `.pptx` files** — with **no account,

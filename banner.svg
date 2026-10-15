@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" role="img" aria-label="diapo — Fast presentations in the browser">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4f46e5"/>
+      <stop offset="1" stop-color="#a855f7"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="1200" height="340" rx="36" fill="url(#bg)"/>
+  <g>
+    <rect x="72" y="86" width="168" height="168" rx="40" fill="#ffffff" opacity="0.16"/>
+    <rect x="86" y="100" width="140" height="140" rx="32" fill="#ffffff"/>
+    <rect x="108" y="118" width="96" height="62" rx="12" fill="#4f46e5"/>
+    <path d="M142 128v42l36-21z" fill="#ffffff"/>
+    <rect x="124" y="196" width="64" height="14" rx="7" fill="#4f46e5" opacity="0.45"/>
+  </g>
+  <text x="286" y="178" font-family="Segoe UI, Arial, sans-serif" font-size="96" font-weight="800" fill="#ffffff">diapo</text>
+  <path d="M612 128l12 26 26 12-26 12-12 26-12-26-26-12 26-12z" fill="#ffffff" opacity="0.9"/>
+  <text x="290" y="238" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="400" fill="#ffffff" opacity="0.92">Fast presentations in the browser</text>
+  <text x="1128" y="312" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="24" fill="#ffffff" opacity="0.7">© 2026 salim-slimani</text>
+</svg>
