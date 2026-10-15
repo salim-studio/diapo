@@ -394,7 +394,11 @@ async function homeView(app){
   <button class="btn" id="b-import">📥 ${t("import")}</button>
   <button class="btn" id="b-demo">✨ ${t("start")}</button>
   <input class="btn" id="q" placeholder="${t("search")}" style="min-width:200px"></div>
-  <div class="deck-grid" id="grid"></div>
+  <h2 class="sec">⭐ Featured templates</h2><div class="tpl-row" id="feat"></div>
+  <h2 class="sec">📁 My presentations</h2><div class="deck-grid" id="grid"></div>
+  <h2 class="sec">🎨 Template gallery <small id="tpl-count"></small></h2>
+  <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap"><select class="btn small" id="tpl-cat"></select><input class="btn small" id="tpl-q" placeholder="Filter 100 templates…" style="min-width:180px"></div>
+  <div class="deck-grid" id="tgrid"></div>
   <footer class="foot"><span>© 2026 salim-slimani</span><span>diapo ✦ fast presentations</span></footer>`;
   app.appendChild(d);
   const grid=d.querySelector("#grid");
@@ -421,6 +425,7 @@ async function homeView(app){
   }
   draw();
   d.querySelector("#q").oninput=e=>draw(e.target.value);
+  try{initTemplateGallery(d);}catch(e){console.warn(e);}
   d.querySelector("#b-new").onclick=()=>newDeckFlow();
   d.querySelector("#b-demo").onclick=async()=>{const x=demoDecks();await dbPut(x);idxUpsert(x);location.hash="#/edit?id="+x.id;};
   d.querySelector("#b-import").onclick=()=>pickFiles();

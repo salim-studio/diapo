@@ -126,3 +126,9 @@ kbd{background:var(--bg);border:1px solid var(--line);border-bottom-width:2px;bo
   .print-slide{break-after:page;position:relative;overflow:hidden;background:#fff}
 }
 .foot{margin-top:26px;padding:14px 4px;color:var(--muted);font-size:12.5px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;border-top:1px solid var(--line)}
+.sec{margin:24px 0 10px;font-size:18px}
+.sec small{color:var(--muted);font-size:12px;font-weight:400}
+.tpl-row{display:flex;gap:12px;overflow-x:auto;padding:4px 2px 12px;scroll-snap-type:x mandatory}
+.tpl-card{min-width:228px;max-width:228px;scroll-snap-align:start}
+.tpl-card.feat{border-color:var(--brand2);box-shadow:0 4px 18px rgba(79,70,229,.25)}
+.tpl-card canvas{border-bottom:1px solid var(--line)}
